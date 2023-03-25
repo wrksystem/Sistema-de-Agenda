@@ -40,6 +40,9 @@ include("db/conexao.php");
                 case 'editar-contato':
                     include("pages/contacts/editar-contato.php");
                     break;
+                case 'excluir-contato':
+                    include("pages/contacts/excluir-contato.php");
+                    break;
                 case 'atualizar-contato':
                     include("pages/contacts/atualizar-contato.php");
                     break;    
