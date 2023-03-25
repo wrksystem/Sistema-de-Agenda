@@ -20,6 +20,7 @@ include("db/conexao.php");
             <a href="index.php?menuop=eventos">Eventos</a> |
         </nav>
     </header>
+    <hr>
     <main>
         <?php
             $menuop = (isset($_GET["menuop"]))?$_GET["menuop"]:"home";
