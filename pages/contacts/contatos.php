@@ -2,7 +2,11 @@
     <h3>Contatos</h3>
 </header>
 
-// Registro Ficticio
+<div>
+    <a href="index.php?menuop=cad-contato">Novo Contato</a>
+</div>
+
+<!--Contato Ficticio-->
 
 <table border="1">
     <thead>
