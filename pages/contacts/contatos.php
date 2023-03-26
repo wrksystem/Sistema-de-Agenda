@@ -30,6 +30,12 @@
     <tbody>
 
     <?php
+
+        $quantidade = 10;
+        $pages = (isset($_GET['pagina']))?(int)$_GET['pagina']:1;
+        $inicio = ($quantidade * $pages) - $quantidade;
+
+
         $txt_pesquisa = (isset($_POST["txt_pesquisa"]))?$_POST["txt_pesquisa"]:"";
 
         $sql = "SELECT
@@ -50,6 +56,7 @@
         idContato='{$txt_pesquisa}' or
         nomeContato LIKE '%{$txt_pesquisa}%'
         ORDER BY nomeContato ASC
+        LIMIT $inicio , $quantidade
         ";
         $rs = mysqli_query($conexao, $sql) or die("Erro ao executar a consulta!" . mysqli_error($conexao));
         
@@ -74,3 +81,24 @@
     ?>
     </tbody>
 </table>
+<br>
+<?php
+
+$sqlTotal = "SELECT idContato FROM dbcontatos";
+$qrTotal = mysqli_query($conexao, $sqlTotal) or die(mysqli_error($conexao));
+$numTotal = mysqli_num_rows($qrTotal);
+$totalPagina = ceil($numTotal/$quantidade);
+echo "Total de Registros: $numTotal <br>";
+echo '<a href="?menuop=contatos&pagina=1">Primeira Página</a>';
+
+for($i = 1; $i <= $totalPagina; $i++){
+   
+    if($i==$pages){
+        echo $i;
+    }else{
+        echo "<a href=\"?menuop=contatos&pagina=$i\">$i </a>";
+    }
+}
+echo "<a href=\"?menuop=contatos&pagina=$totalPagina\">Última Página</a>";
+
+?>
