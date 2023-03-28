@@ -91,14 +91,34 @@ $totalPagina = ceil($numTotal/$quantidade);
 echo "Total de Registros: $numTotal <br>";
 echo '<a href="?menuop=contatos&pagina=1">Primeira Página</a>';
 
+//validação da paginação das páginas para maior
+if ($pages>6){
+    ?>
+        <a href="?menuop=contatos&pages=<?php echo $pages-1?>"> << </a>
+    <?php
+}
+
+//teste de validação da quantidade de páginas para apresentação na navegação da paginação
 for($i = 1; $i <= $totalPagina; $i++){
    
-    if($i==$pages){
-        echo $i;
-    }else{
-        echo "<a href=\"?menuop=contatos&pagina=$i\">$i </a>";
+    if($i>=($pages-5) && $i <= ($pages+5)){
+
+        if($i==$pages){
+            echo $i;
+        }else{
+            echo "<a href=\"?menuop=contatos&pagina=$i\">$i </a>";
+        }
     }
 }
+//validação das páginas para menor
+if ($pages < ($totalPagina-5)){
+    ?>
+        <a href="?menuop=contatos&pages=<?php echo $pages+1?>"> >> </a>
+    <?php
+}
+//nesse caso os sinais de << e >> apenas irão aparecer quando a paginação do registros ultrapassarem
+// a quantidade 6 páginas sendo cada página com 10 registros, totalizando 60 registros para começar a paginação
+// de forma completa como apresentado na aula.
 echo "<a href=\"?menuop=contatos&pagina=$totalPagina\">Última Página</a>";
 
 ?>
