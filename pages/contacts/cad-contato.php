@@ -3,32 +3,36 @@
 </header>
 <div>
     <form action="index.php?menuop=inserir-contato" method="post">
-        <div>
-            <label for="nomeContato">Nome</label>
-            <input type="text" name="nomeContato" required>
+        <div class="mb-3">
+            <label class="form-label" for="nomeContato">Nome</label>
+            <input class="form-control" type="text" name="nomeContato" required>
         </div>
-        <div>
-            <label for="emailContato">E-mail</label>
-            <input type="email" name="emailContato" required>
+        <div class="mb-3">
+            <label class="form-label" for="emailContato">E-Mail</label>
+            <input class="form-control" class="form-label" type="email" name="emailContato" required>
         </div>
-        <div>
-            <label for="telefoneContato">Telefone</label>
-            <input type="text" name="telefoneContato" required>
+        <div class="mb-3">
+            <label class="form-label" for="telefoneContato">Telefone</label>
+            <input class="form-control" type="text" name="telefoneContato" required>
         </div>
-        <div>
-            <label for="enderecoContato">Endereço</label>
-            <input type="text" name="enderecoContato" required>
+        <div class="mb-3">
+            <label class="form-label" for="enderecoContato">Endereço</label>
+            <input class="form-control" type="text" name="enderecoContato" required>
         </div>
-        <div>
-            <label for="sexoContato">Sexo</label>
-            <input type="text" name="sexoContato" required>
+        <div class="mb-3">
+            <label class="form-label" for="sexoContato">Sexo</label>
+            <select class="form-control" name="sexoContato" id="sexoContato">
+                <option selected>Selecione o sexo</option>
+                <option value="M">Masculino</option>
+                <option value="F">Feminino</option>
+            </select>
         </div>
-        <div>
-            <label for="dataNascContato">Data de Nascimento</label>
-            <input type="date" name="dataNascContato" required>
+        <div class="mb-3">
+            <label class="form-label" for="dataNascContato">Data de Nascimento</label>
+            <input class="form-control" type="date" name="dataNascContato" required>
         </div>
-        <div>
-            <input type="submit" value="ADICIONAR" name="btnAdicionar">
+        <div class="mb-3">
+            <input class="btn btn-success" type="submit" value="ADICIONAR" name="btnAdicionar">
         </div>
     </form>
 </div>
