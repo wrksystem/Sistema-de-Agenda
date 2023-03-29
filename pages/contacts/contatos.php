@@ -1,20 +1,20 @@
 <header>
-    <h3>Contatos</h3>
+    <h3><i class="bi bi-person-square"></i>Contatos</h3>
 </header>
 
 <div>
-    <a href="index.php?menuop=cad-contato">Novo Contato</a>
+    <a class="btn btn-outline-secondary mb-2" href="index.php?menuop=cad-contato"><i class="bi bi-person-plus-fill"></i> Novo Contato</a>
 </div>
 
 <div>
     <form action="index.php?menuop=contatos" method="post">
         <input type="text" name="txt_pesquisa">
-        <input type="submit" value="Pesquisar">
+        <button class="btn btn-outline-success btn-sm mb-2" type="submit"><i class="bi bi-search"></i>Pesquisar</button>
     </form>
 </div>
 <!--Contato Ficticio-->
 <div class="tabela">
-<table class="table table-dark table-striped table-bordered table-sn">
+<table class="table table-dark table-striped table-bordered table-sm">
     <thead>
         <tr>
             <th>ID</th>
@@ -73,8 +73,8 @@
             <td class="text-nowrap"><?=$dados["enderecoContato"] ?></td>
             <td><?=$dados["sexoContato"] ?></td>
             <td><?=$dados["dataNascContato"] ?></td>
-            <td><a href="index.php?menuop=editar-contato&idContato=<?=$dados["idContato"]?>">Editar</a></td>
-            <td><a href="index.php?menuop=excluir-contato&idContato=<?=$dados["idContato"]?>">Excluir</a></td>
+            <td class="text-center"><a class="btn btn-outline-warning btn-sm" href="index.php?menuop=editar-contato&idContato=<?=$dados["idContato"]?>"><i class="bi bi-pencil-square"></i></a></td>
+            <td class="text-center"><a class="btn btn-outline-danger btn-sm" href="index.php?menuop=excluir-contato&idContato=<?=$dados["idContato"]?>"><i class="bi bi-trash-fill"></i></a></td>
         </tr>
 
     <?php
