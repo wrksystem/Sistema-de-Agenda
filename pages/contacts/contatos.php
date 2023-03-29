@@ -13,7 +13,8 @@
     </form>
 </div>
 <!--Contato Ficticio-->
-<table border="1">
+<div class="tabela">
+<table class="table table-dark table-striped table-bordered">
     <thead>
         <tr>
             <th>ID</th>
@@ -81,7 +82,9 @@
     ?>
     </tbody>
 </table>
-<br>
+</div>
+
+
 <?php
 
 $sqlTotal = "SELECT idContato FROM dbcontatos";
