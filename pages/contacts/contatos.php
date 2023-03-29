@@ -14,7 +14,7 @@
 </div>
 <!--Contato Ficticio-->
 <div class="tabela">
-<table class="table table-dark table-striped table-bordered">
+<table class="table table-dark table-striped table-bordered table-sn">
     <thead>
         <tr>
             <th>ID</th>
@@ -67,10 +67,10 @@
     ?>
         <tr>
             <td><?=$dados["idContato"] ?></td>
-            <td><?=$dados["nomeContato"] ?></td>
-            <td><?=$dados["emailContato"] ?></td>
-            <td><?=$dados["telefoneContato"] ?></td>
-            <td><?=$dados["enderecoContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["nomeContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["emailContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["telefoneContato"] ?></td>
+            <td class="text-nowrap"><?=$dados["enderecoContato"] ?></td>
             <td><?=$dados["sexoContato"] ?></td>
             <td><?=$dados["dataNascContato"] ?></td>
             <td><a href="index.php?menuop=editar-contato&idContato=<?=$dados["idContato"]?>">Editar</a></td>
@@ -84,44 +84,47 @@
 </table>
 </div>
 
-
-<?php
-
-$sqlTotal = "SELECT idContato FROM dbcontatos";
-$qrTotal = mysqli_query($conexao, $sqlTotal) or die(mysqli_error($conexao));
-$numTotal = mysqli_num_rows($qrTotal);
-$totalPagina = ceil($numTotal/$quantidade);
-echo "Total de Registros: $numTotal <br>";
-echo '<a href="?menuop=contatos&pagina=1">Primeira Página</a>';
-
-//validação da paginação das páginas para maior
-if ($pages>6){
-    ?>
-        <a href="?menuop=contatos&pages=<?php echo $pages-1?>"> << </a>
+<ul class="pagination justify-content-center">
     <?php
-}
 
-//teste de validação da quantidade de páginas para apresentação na navegação da paginação
-for($i = 1; $i <= $totalPagina; $i++){
-   
-    if($i>=($pages-5) && $i <= ($pages+5)){
+        $sqlTotal = "SELECT idContato FROM dbcontatos";
+        $qrTotal = mysqli_query($conexao, $sqlTotal) or die(mysqli_error($conexao));
+        $numTotal = mysqli_num_rows($qrTotal);
+        $totalPagina = ceil($numTotal/$quantidade);
 
-        if($i==$pages){
-            echo $i;
-        }else{
-            echo "<a href=\"?menuop=contatos&pagina=$i\">$i </a>";
+        echo "<li class='page-item'><span class='page-link'>Total de Registros: " . $numTotal . " </span></li> ";
+        
+        echo '<li class="page-item"><a class="page-link" href="?menuop=contatos&pagina=1">Primeira Página</a></li>';
+
+        //validação da paginação das páginas para maior
+        if ($pages>6){
+            ?>
+              <li class="page-item"> <a class="page-link" href="?menuop=contatos&pages=<?php echo $pages-1?>"> << </a></li>
+            <?php
         }
-    }
-}
-//validação das páginas para menor
-if ($pages < ($totalPagina-5)){
-    ?>
-        <a href="?menuop=contatos&pages=<?php echo $pages+1?>"> >> </a>
-    <?php
-}
-//nesse caso os sinais de << e >> apenas irão aparecer quando a paginação do registros ultrapassarem
-// a quantidade 6 páginas sendo cada página com 10 registros, totalizando 60 registros para começar a paginação
-// de forma completa como apresentado na aula.
-echo "<a href=\"?menuop=contatos&pagina=$totalPagina\">Última Página</a>";
 
-?>
+        //teste de validação da quantidade de páginas para apresentação na navegação da paginação
+        for($i = 1; $i <= $totalPagina; $i++){
+        
+            if($i>=($pages-5) && $i <= ($pages+5)){
+
+                if($i==$pages){
+                    echo "<li class='page-item active'><span class='page-link'>$i</span></li>";
+                }else{
+                    echo "<li class='page-item'><a class='page-link' href=\"?menuop=contatos&pagina=$i\">$i </a></li>";
+                }
+            }
+        }
+        //validação das páginas para menor
+        if ($pages < ($totalPagina-5)){
+            ?>
+               <li class="page-item"><a class="page-link" href="?menuop=contatos&pages=<?php echo $pages+1?>"> >> </a></li>
+            <?php
+        }
+        //nesse caso os sinais de << e >> apenas irão aparecer quando a paginação do registros ultrapassarem
+        // a quantidade 6 páginas sendo cada página com 10 registros, totalizando 60 registros para começar a paginação
+        // de forma completa como apresentado na aula.
+        echo "<li class='page-item'><a class='page-link' href=\"?menuop=contatos&pagina=$totalPagina\">Última Página</a></li>";
+
+    ?>
+</ul>
