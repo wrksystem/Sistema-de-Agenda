@@ -1,6 +1,6 @@
 <?php
 $idContato = $_GET["idContato"];
-$sql = "SELECT * FROM dbcontatos WHERE idContato= {$idContato}";
+$sql = "SELECT * FROM tbcontatos WHERE idContato= {$idContato}";
 $result = mysqli_query($conexao, $sql) or die("Erro ao recuperar os dados do registro. " . mysqli_error($conexao));
 $dados = mysqli_fetch_assoc($result);
 ?>

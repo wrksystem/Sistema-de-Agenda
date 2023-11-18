@@ -12,7 +12,7 @@
     $enderecoContato = mysqli_real_escape_string($conexao, $_POST["enderecoContato"]);
     $sexoContato = mysqli_real_escape_string($conexao, $_POST["sexoContato"]);
     $dataNascContato = mysqli_real_escape_string($conexao, $_POST["dataNascContato"]);
-    $sql = "UPDATE dbcontatos SET
+    $sql = "UPDATE tbcontatos SET
         nomeContato = '{$nomeContato}',
         emailContato = '{$emailContato}',
         telefoneContato = '{$telefoneContato}',

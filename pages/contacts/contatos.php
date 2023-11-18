@@ -52,10 +52,13 @@
             'NÃO ESPECIFICADO'
         END AS sexoContato,
         DATE_FORMAT(dataNascContato, '%d/%m/%Y') AS dataNascContato
-        FROM dbcontatos 
+        FROM tbcontatos 
         WHERE 
         idContato='{$txt_pesquisa}' or
-        nomeContato LIKE '%{$txt_pesquisa}%'
+        nomeContato LIKE '%{$txt_pesquisa}%' or
+        emailContato LIKE '%{$txt_pesquisa}%' or
+        telefoneContato LIKE '%{$txt_pesquisa}%' or
+        enderecoContato LIKE '%{$txt_pesquisa}%'
         ORDER BY nomeContato ASC
         LIMIT $inicio , $quantidade
         ";
@@ -87,7 +90,7 @@
 <ul class="pagination justify-content-center">
     <?php
 
-        $sqlTotal = "SELECT idContato FROM dbcontatos";
+        $sqlTotal = "SELECT idContato FROM tbcontatos";
         $qrTotal = mysqli_query($conexao, $sqlTotal) or die(mysqli_error($conexao));
         $numTotal = mysqli_num_rows($qrTotal);
         $totalPagina = ceil($numTotal/$quantidade);
